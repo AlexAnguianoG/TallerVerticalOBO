@@ -5,8 +5,7 @@ include CarFactory
 # Database connection
 Database.load(db_file: 'db.yml')  
 
-# Which fields are available
-
+# Car objects creation
 civic = Car.new(
   brand:        "Honda",
   name:         "Civic",
@@ -27,6 +26,7 @@ accord = Car.new(
   style:        "Hashback"
 )
 
+#Logic to calculate the max number of cars based on the inventory.
 def calcular_civic(civic)
   [Inventory.continental_tires / 4 , Inventory.motors_with_turbo, Inventory.doors / 4, Inventory.manual_transmissions].min
 end
@@ -36,14 +36,12 @@ def calcular_accord(accord)
 end
 
 
-# How to build a car object
-
+# Insert the car into the array
 civic_array = Array.new(calcular_civic(civic), civic)
-
 accord_array = Array.new(calcular_accord(accord), accord)
 
 
-# Post result to validator
+# Post Civic car result to validator
 resultCivic = Transport.post_result(
   team:       10,
   total:      calcular_civic(civic),
@@ -52,6 +50,7 @@ resultCivic = Transport.post_result(
 
 puts resultCivic.body.inspect
 
+# Post Accord car result to validator
 resultAccord = Transport.post_result(
   team:       10,
   total:      calcular_accord(accord),
