@@ -15,7 +15,7 @@ puts Inventory.manual_transmissions
 puts Inventory.automatic_transmissions
 
 # How to build a car object
-car = Car.new(
+car1 = Car.new(
   brand:        "Mercedes",
   name:         "Citan",
   tires:        "Continental",
@@ -25,9 +25,10 @@ car = Car.new(
   style:        "Sedan"
 )
 
+
 # Post result to validator
 result = Transport.post_result(
-  team:       1,
+  team:       10,
   total:      1,
   cars:       [car]
 )
